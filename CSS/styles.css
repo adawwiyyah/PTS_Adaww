@@ -1,0 +1,403 @@
+/* 1. Palet warna web upunstore */
+:root {
+  --merah-utama: #d92243;
+  --oranye-muda: #f4a261;
+  --kuning-emas: #e9c46a;
+  --krem-bg: #fff8f0;
+  --putih-card: #ffffff;
+  --teks-gelap: #2b2d42;
+  --border-halus: #f0e6df;
+}
+
+/* 2. reset default & styling elemen-elemen dasar */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--krem-bg);
+  color: var(--teks-gelap);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding: 15px;
+  overflow-x: hidden;
+}
+
+/* pembungkus halaman utama agar rata tengah */
+.wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 3. tampilan header banner */
+.header-banner {
+  background-color: var(--merah-utama);
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(217, 34, 67, 0.15);
+}
+
+.header-banner h1 {
+  color: #ffffff;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  font-weight: 700;
+}
+
+.sub-header {
+  font-size: clamp(0.78rem, 2.5vw, 0.88rem);
+  color: #fbe3e8;
+  margin-top: 2px;
+}
+
+.mhs-header {
+  font-size: clamp(0.78rem, 2.5vw, 0.88rem);
+  color: var(--kuning-emas);
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* 4. tampilan box Utama */
+.section-box {
+  background-color: var(--putih-card);
+  border: 1px solid var(--border-halus);
+  border-radius: 10px;
+  padding: 16px 18px;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.section-box h3 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: var(--merah-utama);
+  font-weight: 600;
+}
+
+/* box status waktu pembutan dan tombol retry */
+.status-box {
+  padding: 12px 16px;
+  border-left: 4px solid var(--oranye-muda);
+}
+
+.status-time {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: #666;
+}
+
+.btn-retry {
+  background-color: var(--merah-utama);
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+/* 5. tampilan grid statistik 4 kartu  */
+.grid-statistik {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.stat-card {
+  background-color: var(--putih-card);
+  border: 1px solid var(--border-halus);
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  color: var(--merah-utama);
+  font-weight: 700;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* elemen kontrol filter kategori */
+.filter-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-controls label {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.filter-controls select {
+  padding: 7px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-family: inherit;
+  font-size: 0.85rem;
+  background-color: var(--krem-bg);
+  cursor: pointer;
+}
+
+/* 7. tampilan grid katalog produk-produk */
+.grid-produk {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.card-produk {
+  border: 1px solid var(--border-halus);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--putih-card);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  height: 100%; /* Menjadikan tinggi kartu seragam */
+}
+
+.card-produk:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.07);
+}
+
+.card-produk img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  background-color: var(--krem-bg);
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.kat-produk {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--oranye-muda);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.judul-produk {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 2px 0 8px 0;
+  color: var(--teks-gelap);
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.6em; /* Mengunci tinggi judul agar simetris */
+}
+
+.harga-wrapper {
+  margin-top: auto; /* Mendorong harga dan tombol ke posisi paling bawah */
+  padding-top: 6px;
+}
+
+.harga-produk {
+  font-size: 0.82rem;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.harga-produk strong {
+  color: var(--merah-utama);
+  font-size: 0.95rem;
+}
+
+.btn-detail {
+  background-color: var(--oranye-muda);
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.btn-detail:hover {
+  background-color: #e08b47;
+}
+
+/* 8. tampilan elemen form preferensi dan validasi */
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+.form-group input[type="text"] {
+  width: 100%;
+  max-width: 450px;
+  padding: 9px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  background-color: var(--krem-bg);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  accent-color: var(--merah-utama);
+  width: 16px;
+  height: 16px;
+}
+
+.text-error {
+  color: var(--merah-utama);
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.text-sukses {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 10px;
+  border: 1px solid #c8e6c9;
+  max-width: 450px;
+}
+
+.btn-submit {
+  background-color: var(--merah-utama);
+  color: white;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+/* tampilan loding dan error */
+.state-info {
+  text-align: center;
+  padding: 25px 0;
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #f3e5f5;
+  border-top: 3px solid var(--merah-utama);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 10px auto;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-style {
+  background-color: #fde8e8;
+  color: var(--merah-utama);
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #f8b4b4;
+}
+
+/* 9. tampian footer banner */
+.footer-banner {
+  background-color: var(--merah-utama);
+  color: #fbe3e8;
+  text-align: center;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+}
+
+/* 10. Tampilan media queries agar tampilan web responsif */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  .grid-statistik {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-produk {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-produk {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .card-produk img {
+    height: 110px;
+  }
+}
