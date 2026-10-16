@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UpunStore - Dashboard Produk UMKM</title>
+
+    <!-- Memanggil file untuk disikronisasikan -->
+    <link rel="stylesheet" href="CSS/styles.css" />
+
+    <!-- memanggil font poppins dari google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- header utama paling atas -->
+      <header class="header-banner">
+        <h1>UpunStore</h1>
+        <p class="sub-header">
+          Dashboard Produk • Pusat Katalog & Statistik UMKM Digital
+        </p>
+        <p class="mhs-header">Nabilah 'Adawiyyah • NIM: 2440304018</p>
+      </header>
+
+      <!-- tampilan status waktu dan tombol retry jika terjadi error -->
+      <section class="section-box status-box">
+        <div class="status-time">
+          <span id="waktu-muat">Waktu pemuatan data: -</span>
+          <!-- stamp waktu untuk data real-time -->
+          <button id="btn-retry" class="btn-retry" style="display: none">
+            <!-- tombol retry ketika koneksi API gagal -->
+            🔄 Coba Lagi
+          </button>
+        </div>
+      </section>
+
+      <!-- tampilan 4 grid statistik -->
+      <section class="grid-statistik">
+        <div class="stat-card">
+          <span class="stat-label">Total Produk</span>
+          <h2 id="stat-total" class="stat-value">0</h2>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-label">Rata-rata Harga</span>
+          <h2 id="stat-rata" class="stat-value">$0</h2>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-label">Produk Termahal</span>
+          <h2 id="stat-termahal" class="stat-value">-</h2>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-label">Jumlah Kategori</span>
+          <h2 id="stat-kategori" class="stat-value">0</h2>
+        </div>
+      </section>
+
+      <!-- tampilan box filter kategori -->
+      <section class="section-box filter-box">
+        <h3>Filter Kategori Produk</h3>
+        <div class="filter-controls">
+          <label for="select-kategori">Pilih Kategori:</label>
+          <select id="select-kategori">
+            <option value="semua">Semua Kategori</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- tampilan katalog produk-produk -->
+      <section class="section-box product-section">
+        <h3>Daftar Produk UMKM</h3>
+
+        <!-- loading state -->
+        <div id="loading" class="state-info">
+          <div class="spinner"></div>
+          <p>Lagi ngambil data produk...</p>
+        </div>
+
+        <!-- error state -->
+        <div
+          id="error-box"
+          class="state-info error-style"
+          style="display: none"
+        >
+          <p id="pesan-error">Gagal ngambil data dari API.</p>
+        </div>
+
+        <!-- tampilan grid produk agar simetris -->
+        <div id="grid-produk" class="grid-produk"></div>
+      </section>
+
+      <!-- tampilan form pemesanan dan preferensi (digit Z=8) -->
+      <section class="section-box form-box">
+        <h3>Form Pemesanan & Preferensi Produk UMKM</h3>
+        <form id="form-preferensi" novalidate>
+          <!-- inputan nama -->
+          <div class="form-group">
+            <label for="nama-pemohon">Nama Pembeli / UMKM:</label>
+            <input
+              type="text"
+              id="nama-pemohon"
+              placeholder="Masukkan nama Anda..."
+              required
+            />
+          </div>
+
+          <!-- checbox preferensi kategori -->
+          <div class="form-group">
+            <label>1. Pilih Minimal 1 Preferensi Kategori (Digit Z):</label>
+            <div class="checkbox-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" name="preferensi" value="beauty" />
+                <span>Beauty & Personal Care</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="preferensi" value="fragrances" />
+                <span>Fragrances & Parfume</span>
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" name="preferensi" value="groceries" />
+                <span>Groceries & Food UMKM</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- tempat pesan error untuk vallidasi form -->
+          <div class="form-group">
+            <label for="select-produk-pesan"
+              >2. Pilih Produk yang Ingin Dipesan:</label
+            >
+            <select
+              id="select-produk-pesan"
+              style="
+                width: 100%;
+                max-width: 450px;
+                padding: 8px;
+                border-radius: 6px;
+                border: 1px solid #ddd;
+                font-family: inherit;
+              "
+            >
+              <option value="">
+                -- Pilih Kategori Di Atas Terlebih Dahulu --
+              </option>
+            </select>
+          </div>
+
+          <!-- tempat pesan error pada validasi form -->
+          <span id="error-preferensi" class="text-error"></span>
+
+          <!-- tombol subit form -->
+          <button
+            type="submit"
+            class="btn-submit"
+            style="background-color: #25d366; color: white; margin-top: 10px"
+          >
+            📲 Pesan via WhatsApp
+          </button>
+
+          <!-- tempat notifikasi ringkasan pemesanan  -->
+          <div id="notif-sukses" class="text-sukses" style="display: none">
+            Mengarahkan ke WhatsApp...
+          </div>
+        </form>
+      </section>
+
+      <!-- tampilan footer banner -->
+      <footer class="footer-banner">
+        <p>
+          Nabilah 'Adawiyyah • NIM: 2440304018 • Kelas: Pemrograman Web (Teknik
+          Komputer UBT) • PTS
+        </p>
+      </footer>
+    </div>
+
+    <!-- menghubungkan file javascript utama dari folder JS -->
+    <script src="JS/app.js"></script>
+  </body>
+</html>
