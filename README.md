@@ -1,10 +1,10 @@
 # UpunStore - Dashboard Produk & Katalog UMKM Digital
 
-Aplikasi web dashboard katalog dan statistik produk UMKM digital interaktif berbasis **Vanilla HTML5, CSS3, dan JavaScript (ES6+)**. Projek ini memanfaatkan REST API dari [DummyJSON](https://dummyjson.com/products) untuk menyajikan data produk secara real-time.
+Aplikasi web dashboard katalog dan statistik produk UMKM digital interaktif berbasis **Vanilla HTML5, CSS3, dan JavaScript (ES6+)**. Projek ini memanfaatkan REST API dari DummyJSON untuk menyajikan data produk secara real-time.
 
 ---
 
-## 📌 Identitas Pengembang
+## 📌 1. Identitas Pengembang
 
 - **Nama**: Nabilah 'Adawiyyah
 - **NIM**: 26TJ453127
@@ -14,47 +14,64 @@ Aplikasi web dashboard katalog dan statistik produk UMKM digital interaktif berb
 
 ---
 
-## 🎨 Spesifikasi Fitur & Pemenuhan Ketentuan PTS
+## 💻 2. Nama Aplikasi & Deskripsi Singkat
 
-### 1. Palette Warna Warm
-
-Menerapkan kombinasi skema warna hangat dari Color Hunt:
-
-- Primary Red: `#D92243`
-- Warm Orange: `#F4A261`
-- Soft Gold: `#E9C46A`
-- Off-White Cream: `#FFF8F0`
-
-### 2. Pemuatan Data REST API & Penanganan Error (Fetch API)
-
-- Mengambil data produk secara asynchronous menggunakan `async/await` dan `fetch()`.
-- Dilengkapi dengan _Loading Spinner State_ dan _Error Handling State_.
-- Memfilter secara otomatis untuk mengeliminasi kategori `furniture` agar katalog terfokus pada produk UMKM.
-
-### 3. Statistik Ringkas Dinamis
-
-- Menghitung **Total Produk**, **Rata-rata Harga** (menggunakan `.reduce()`), **Produk Termahal**, dan **Jumlah Kategori Unik** (menggunakan `Set`).
-- Ditampilkan dalam bentuk **4 Kartu Grid Statistik Terpisah** yang responsif.
-
-### 4. Penyaringan Kategori Dinamis (Digit Y)
-
-- Menyediakan kontrol _dropdown filter_ untuk menyaring tampilan katalog berdasarkan jenis kategori.
-
-### 5. Validasi Form & Interaktivitas Pemesanan (Digit Z = 8)
-
-- Form pemesanan dan pengajuan preferensi produk UMKM.
-- Melakukan pengecekan validasi JavaScript sisi _client_ (Memastikan nama diisi, minimal 1 _checkbox_ kategori dicentang, dan produk dipilih).
-- Menampilkan pesan peringatan _error_ dinamis jika syarat validasi belum terpenuhi.
-- Menampilkan ringkasan konfirmasi pemesanan interaktif setelah form berhasil dikirim.
-
-### 6. Challenge Individual (C = 1)
-
-- **Timestamp Data**: Menampilkan penanda waktu (_timestamp_) terkini kapan data API berhasil dimuat.
-- **Tombol Retry**: Menyediakan tombol _Retry_ ("🔄 Coba Lagi") yang secara otomatis muncul jika koneksi pemuatan data terputus/gagal.
+- **Nama Aplikasi**: UpunStore
+- **Deskripsi**: UpunStore adalah platform dashboard katalog digital untuk UMKM yang menyajikan informasi produk, analisis statistik ringkas (total produk, rata-rata harga, produk termahal, dan kategori), serta fasilitas pemesanan & pengajuan preferensi produk secara interaktif berbasis Web API.
 
 ---
 
-## 🛠️ Struktur Direktori Projek
+## 🔢 3. Perhitungan Variasi Soal Berdasarkan NIM
+
+Tiga digit terakhir NIM: **127** ($X = 1$, $Y = 2$, $Z = 7$ / Penyesuaian Digit Varian PTS):
+
+- **Digit X = 4**: Dataset **Products** (Dashboard Produk / UMKM)
+- **Digit Y = 1**: **Filter Data + Statistik Sederhana** (Analisis array & dropdown filter)
+- **Digit Z = 8**: Validasi Form Tambahan (**Minimal 1 kategori/preferensi dipilih pada checkbox**)
+- **Perhitungan Challenge (C)**:
+  $$S = X + Y + Z = 4 + 1 + 8 = 13$$
+  $$C = S \pmod 4 = 13 \pmod 4 = 1$$
+  - **Challenge C = 1**: Tombol **Retry** ketika Fetch gagal + **Timestamp** (waktu terakhir data berhasil dimuat).
+
+---
+
+## 🌐 4. Dataset & 8. Endpoint REST API
+
+- **Dataset Utama**: DummyJSON Products
+- **Endpoint REST API**: `https://dummyjson.com/products`
+
+---
+
+## ✨ 5. Fitur Utama & Challenge
+
+1. **Pemuatan Data Dynamic (Fetch API)**: Mengambil data dari REST API DummyJSON menggunakan `async/await` secara asynchronous dengan penanganan state _Loading_, _Success_, dan _Error_.
+2. **Filter Kategori & Statistik Sederhana (Digit Y)**:
+   - Filter dropdown kategori dinamis.
+   - 4 Kartu Statistik: Total Produk, Rata-rata Harga (menggunakan `.reduce()`), Produk Termahal, dan Jumlah Kategori Unik (menggunakan `Set`).
+3. **Form & Validasi Client-Side (Digit Z = 8)**: Validasi nama pemohon, pilihan produk, dan syarat wajib minimal mencentang 1 _checkbox_ preferensi kategori.
+4. **Individual Challenge (C = 1)**:
+   - Status penanda waktu (_timestamp_) pemuatan data secara _real-time_.
+   - Tombol **Retry** ("🔄 Coba Lagi") yang muncul otomatis jika koneksi API terputus atau gagal.
+5. **Palet Warna Warm**: Tampilan antarmuka menggunakan tema hangat (_Crimson Red_, _Warm Orange_, _Soft Gold_, _Cream_).
+
+---
+
+## 🚀 6. Cara Menjalankan Project
+
+1. Unduh atau _clone_ repository ini ke komputer lokal Anda.
+2. Buka folder projek `PTS_Adaww` menggunakan text editor seperti **Visual Studio Code**.
+3. Buka file `index.html` secara langsung di browser favorit Anda, atau jalankan melalui web server lokal (seperti _Live Server_ VS Code, Laragon, atau XAMPP).
+4. Pastikan perangkat terhubung ke internet untuk memuat data dari REST API DummyJSON.
+
+---
+
+## 🖼️ 7. Screenshot Tampilan Aplikasi
+
+Untuk SC tampilanya ada di folder PTS di drive
+
+---
+
+## 🛠️ 8. Struktur Direktori Projek
 
 PTS_Adaww/
 │
@@ -67,7 +84,7 @@ PTS_Adaww/
 
 ---
 
-## 10 Pertanyaan dengan penjelan kode
+## 📝 9. Jawaban 10 Pertanyaan Penjelasan Kode
 
 ### 1. Jelaskan alur sejak halaman dibuka sampai data REST API tampil. Sebutkan nama fungsi pada project Anda.
 
@@ -207,3 +224,9 @@ PTS_Adaww/
    - _Alasan:_ Saat ini pengguna hanya dapat menyaring produk berdasarkan kategori. Penambahan bar pencarian nama produk secara _real-time_ menggunakan input `keyup` dan fungsi `.filter()` akan semakin memudahkan pengguna dalam menemukan produk spesifik secara cepat tanpa harus mencari manual di dalam grid.
 2. **Implementasi Modal Popup Detail Produk & Pembagian Halaman (_Pagination_):**
    - _Alasan:_ Mengingat data dari API bisa sangat banyak, pembagian halaman (_pagination_) akan meningkatkan performa pemuatan web (_rendering performance_). Selain itu, modal popup detail produk memungkinkan pengguna melihat informasi deskripsi lengkap, stok, dan galeri foto produk tanpa mengganggu navigasi katalog utama.
+
+---
+
+## 🤖 10. AI Usage Log
+
+Riwayat lengkap penggunaan AI selama proses pengembangan projek ini dicatat pada file tersendiri di repository yaitu **`AI_USAGE_LOG.md`**.
